@@ -51,23 +51,19 @@ export class MembersService {
   async validateFamilyLink(memberId: string | null, centralMemberId: string | null | undefined): Promise<void> {
     if (!centralMemberId) return;
 
-    // 1. Check self-loop
     if (memberId && memberId === centralMemberId) {
       throw new BadRequestException('A member cannot link to themselves as a central member');
     }
 
-    // 2. Check existence of the central member
     const centralMember = await this.repository.findOne(centralMemberId);
     if (!centralMember) {
       throw new BadRequestException('Central member not found');
     }
 
-    // 3. Prevent multi-level hierarchy: a central member cannot be a dependent of someone else
     if (centralMember.centralMemberId) {
       throw new BadRequestException('The selected central member is already a dependent of another member');
     }
 
-    // 4. Prevent circular/reverse links: if this member is currently a central member for others, they cannot become a dependent of someone else
     if (memberId) {
       const isCentral = await this.repository.hasDependents(memberId);
       if (isCentral) {
