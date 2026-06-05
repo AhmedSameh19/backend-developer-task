@@ -1,11 +1,3 @@
-# My Comments
-I have implemented the following:
-
-  - Performance Optimizations: Resolved the N+1 Query problem in the shops module using a single batch call and implemented pagination for the getAll method in the members module.
-  - Feature Development: Implemented full CRUD functionality for the products module.
-  - Validation & Security: Integrated Joi validation across all DTOs and endpoints, including specific validation for centralMember during creation and updates.
-  - Data Integrity: Added missing columns to the members DTO, specifically subscriptionDate and centralMemberId.
-  - Quality Assurance: Added comprehensive unit tests for all endpoints, including validation logic testing.
 
 
 
@@ -14,6 +6,16 @@ I have implemented the following:
 Blue Ribbon is established with a sense of mission to create inspirational communities that harness the positive power of collective good.
 
 We aim to transform the lifestyle industry with bold thinking, continuous innovation and a meticulous focus on execution. If you are passionate like us, ready to build the future and participate in positively and conscientiously impacting the lives of others, there is but one thing to do: join us.
+
+## My Comments
+I have implemented the following:
+
+  - Performance Optimizations: Resolved the N+1 Query problem in the shops module using a single batch call and implemented pagination for the getAll method in the members module.
+  - Feature Development: Implemented full CRUD functionality for the products module.
+  - Validation & Security: Integrated Joi validation across all DTOs and endpoints, including specific validation for centralMember during creation and updates.
+  - Data Integrity: Added missing columns to the members DTO, specifically subscriptionDate and centralMemberId.
+  - Quality Assurance: Added comprehensive unit tests for all endpoints, including validation logic testing.
+
 
 ## **Task Objective**
 
