@@ -8,7 +8,7 @@ export class CreateMemberDTO {
   @JoiSchema(Joi.string().required())
   lastName: string;
 
-  @JoiSchema(Joi.string().required())
+  @JoiSchema(Joi.string().valid('male', 'female').required())
   gender: string;
 
   @JoiSchema(Joi.string().required())
@@ -17,6 +17,9 @@ export class CreateMemberDTO {
   @JoiSchema(Joi.string().optional())
   phone?: string;
 
-  @JoiSchema(Joi.string().optional())
+  @JoiSchema(Joi.string().uuid().optional())
   centralMemberId?: string;
+
+  @JoiSchema(Joi.string().optional())
+  subscriptionDate?: string;
 }

@@ -5,4 +5,6 @@ export class MemberDTO {
   gender: string;
   dateOfBirth: string;
   phone?: string;
+  centralMemberId?: string;
+  subscriptionDate?: string;
 }

@@ -8,12 +8,15 @@ export class UpdateMemberDTO {
   @JoiSchema(Joi.string().optional())
   lastName?: string;
 
-  @JoiSchema(Joi.string().optional())
+  @JoiSchema(Joi.string().valid('male', 'female').optional())
   gender?: string;
 
   @JoiSchema(Joi.string().optional())
   dateOfBirth?: string;
 
-  @JoiSchema(Joi.string().required())
-  phone: string;
+  @JoiSchema(Joi.string().optional())
+  phone?: string;
+
+  @JoiSchema(Joi.string().optional())
+  centralMemberId?: string;
 }

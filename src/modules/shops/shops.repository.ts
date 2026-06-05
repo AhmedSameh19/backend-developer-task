@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Shop } from 'src/modules/shops/shops.model';
+import { Product } from 'src/modules/products/products.model';
 
 @Injectable()
 export class ShopsRepository {
-  constructor(@InjectModel(Shop) private readonly shopModel: typeof Shop) {}
+  constructor(@InjectModel(Shop) private readonly shopModel: typeof Shop) { }
 
   async create(shop: Partial<Shop>): Promise<Shop> {
     return this.shopModel.create(shop);
@@ -30,4 +31,5 @@ export class ShopsRepository {
   async delete(id: string): Promise<void> {
     await this.shopModel.destroy({ where: { id } });
   }
+
 }

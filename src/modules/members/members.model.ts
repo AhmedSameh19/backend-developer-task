@@ -28,6 +28,9 @@ export class Member extends Model<Member> {
   @Column({ type: DataType.STRING, allowNull: false })
   dateOfBirth: string;
 
+  @Column({ type: DataType.STRING, allowNull: false })
+  subscriptionDate: string;
+
   @Column({ type: DataType.STRING(255), allowNull: true })
   phone?: string;
 

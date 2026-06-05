@@ -6,6 +6,7 @@ import {
   Param,
   Body,
   Patch,
+  Query,
 } from '@nestjs/common';
 import { MembersService } from './members.service';
 import { CreateMemberDTO } from './dto/create-member.dto';
@@ -22,8 +23,14 @@ export class MembersController {
   }
 
   @Get()
-  async findAll(): Promise<MemberDTO[]> {
-    return this.membersService.findAll();
+  async findAll(
+    @Query('page') page?: string,
+    @Query('limit') limit?: string,
+  ): Promise<MemberDTO[]> {
+    return this.membersService.findAll({
+      page: page ? parseInt(page, 10) : undefined,
+      limit: limit ? parseInt(limit, 10) : undefined,
+    });
   }
 
   @Get(':id')

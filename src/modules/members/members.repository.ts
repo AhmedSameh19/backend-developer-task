@@ -6,7 +6,7 @@ import { Member } from 'src/modules/members/members.model';
 export class MembersRepository {
   constructor(
     @InjectModel(Member) private readonly memberModel: typeof Member,
-  ) {}
+  ) { }
 
   /**
    * Creates a member row in the database.
@@ -26,8 +26,11 @@ export class MembersRepository {
    * @returns {Promise<Member[]>} All members rows.
    * @throws {Error} If the database query fails.
    */
-  async findAll(): Promise<Member[]> {
-    return this.memberModel.findAll();
+  async findAll(limit?: number, offset?: number): Promise<Member[]> {
+    return this.memberModel.findAll({
+      limit,
+      offset,
+    });
   }
 
   /**
@@ -67,5 +70,12 @@ export class MembersRepository {
    */
   async delete(id: string): Promise<void> {
     await this.memberModel.destroy({ where: { id } });
+  }
+
+  async hasDependents(memberId: string): Promise<boolean> {
+    const dependent = await this.memberModel.findOne({
+      where: { centralMemberId: memberId },
+    });
+    return !!dependent;
   }
 }
